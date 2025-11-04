@@ -56,7 +56,7 @@
 
 > **최고 성능:** 1280 바이트 프레임에서 **418.55 Mbps** 달성
 
-### RFC 2544 Latency (ICMP Round-Trip Time)
+### RFC 2544 기반 Latency (ICMP Round-Trip Time - 더 보수적)
 
 | 프레임 크기 | Min (ms) | Avg (ms) | Max (ms) | P99 (ms) | Jitter (ms) |
 |----------:|---------:|---------:|---------:|---------:|------------:|
@@ -193,15 +193,28 @@ flowchart LR
     style END fill:#e1f5ff
 ```
 
-### 1️⃣ RFC 2544 테스트
+### 1️⃣ RFC 2544 기반 테스트
 
-**표준 벤치마킹 방법론**
-- **Throughput:** Binary search로 zero-loss 최대 처리량 측정
-- **Latency:** ICMP ping 기반 RTT 측정 (min/avg/max/p50/p90/p95/p99/p99.9)
+**표준 벤치마킹 방법론 (RFC 2544 기반, 일부 개선)**
+
+- **Throughput:** Binary search로 **zero-loss 최대 처리량** 측정
+  - Zero-loss: 패킷 손실률 0% (전송한 모든 패킷이 수신됨)
+  - 60초 전송 후 손실 확인
+
+- **Latency:** **ICMP ping 기반 Round-Trip Time (RTT) 측정**
+  - ⚠️ **RFC 2544는 one-way latency 측정을 권장**하지만, 본 테스트는 **RTT 직접 측정**
+  - 💪 **더 보수적이고 엄격한 기준** (one-way = RTT/2 추정보다 정직함)
+  - 1,000회 ping 샘플링: min/avg/max/p50/p90/p95/p99/p99.9
+  - 실제 네트워크 왕복 지연을 직접 측정
+
 - **Frame Loss:** 6단계 부하(50%, 75%, 90%, 95%, 98%, 100%)에서 손실률 측정
 - **Back-to-Back:** 최대 버스트 용량 측정
 
 **프레임 크기:** 64, 128, 256, 512, 1024, 1280, 1518 bytes
+
+**측정 기준:**
+- **"성능 저하 없음"**: 절대 처리량(Mbps) 기준, FRER과 Non-FRER 간 유의미한 차이 없음
+- **"Zero-Loss"**: 패킷 손실률 0%, 전송된 모든 프레임이 수신됨
 
 ### 2️⃣ Sockperf 테스트
 
@@ -280,6 +293,42 @@ FRER은 **두 경로 중 빠른 것을 자동 선택**하여 레이턴시를 개
 - 경로 장애 시 복구 시간
 - 순서 보장 (Out-of-Order) 비율
 - 레이턴시 개선 효과
+
+#### 🔬 검증 절차 (Verification Methodology)
+
+본 테스트는 다음 검증 절차를 통해 FRER 동작을 확인합니다:
+
+1. **R-TAG 구조 확인 (Wireshark)**
+   - EtherType 0xF1C1 존재 확인
+   - 8바이트 R-TAG 필드 분석 (EtherType + Reserved + Sequence + Original EtherType)
+   - Sequence Number 단조 증가 검증 (0, 1, 2, ...)
+   - 프레임 크기 증가 확인 (64B → 72B)
+
+2. **프레임 복제 검증 (TAP/Mirror Port)**
+   - 네트워크 TAP 장비 또는 스위치 미러 포트 사용
+   - 동일 Sequence Number가 2개 경로에서 수신되는지 확인
+   - 복제 시간 차이 측정 (경로별 지연)
+
+3. **중복 제거 검증 (수신측 통계)**
+   - 수신측에서 1개 프레임만 애플리케이션에 전달되는지 확인
+   - 중복 프레임 폐기 카운터 확인
+   - 제거 효율 계산: (폐기된 중복 프레임 / 전체 수신 프레임) × 100%
+
+4. **성능 측정 (RFC 2544 + Sockperf)**
+   - 처리량: FRER vs Non-FRER 절대 Mbps 비교
+   - 레이턴시: ICMP RTT 1,000회 샘플링, 통계 분석
+   - 패킷 손실률: Zero-loss 달성 여부 확인
+
+5. **스위치 통계 확인 (CLI/SNMP)**
+   - FRER 활성화 포트의 송수신 카운터
+   - R-TAG 삽입/제거 통계
+   - 에러 프레임 카운터 (CRC, Length 오류)
+
+**검증 도구:**
+- Wireshark: 패킷 캡처 및 R-TAG 분석
+- TAP 장비: 비침투적 패킷 복사
+- 스위치 CLI: 포트 통계, FRER 상태 확인
+- Python 스크립트: 자동화된 성능 측정 및 분석
 
 ---
 

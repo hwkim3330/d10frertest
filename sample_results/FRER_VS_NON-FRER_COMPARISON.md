@@ -34,7 +34,7 @@ FRER은 각 프레임에 **8바이트 R-TAG**를 추가하여 프레임 복제 �
 
 ---
 
-## 📈 1. Latency 비교 (ICMP Round-Trip Time)
+## 📈 1. Latency 비교 (ICMP Round-Trip Time - RFC 2544보다 엄격)
 
 ### 전체 프레임 크기 비교
 
