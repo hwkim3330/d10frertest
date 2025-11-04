@@ -11,9 +11,25 @@
 
 ---
 
+## 🔥 **[📊 FRER vs Non-FRER 비교 보기 →](https://hwkim3330.github.io/d10frertest/comparison.html)**
+
+### 핵심 비교 결과 요약
+
+| 지표 | FRER | Non-FRER | 개선율 |
+|------|------|----------|---------|
+| **평균 레이턴시** | 0.356 ms | 0.401 ms | ✅ **+11.2%** |
+| **P99 레이턴시** | 0.676 ms | 0.814 ms | ✅ **+17.0%** |
+| **Jitter** | 0.101 ms | 0.128 ms | ✅ **+21.1%** |
+| **소형 프레임 처리량** | 평균 6.9% 더 높음 | - | ✅ **+6.9%** |
+| **대형 프레임 처리량** | - | 평균 4% 더 높음 | ⚠️ **-4%** |
+
+> 📈 **[인터랙티브 비교 차트 보기](https://hwkim3330.github.io/d10frertest/comparison.html)** | 📄 **[상세 분석 문서](sample_results/FRER_VS_NON-FRER_COMPARISON.md)**
+
+---
+
 ## 📊 주요 테스트 결과
 
-### RFC 2544 Throughput (Zero-Loss)
+### RFC 2544 Throughput (Zero-Loss) - FRER 활성화 (Nov 3)
 
 | 프레임 크기 | Throughput | 손실률 |
 |----------:|----------:|------:|
@@ -625,7 +641,12 @@ sudo ethtool -K enp2s0 tso off gso off gro off
 
 **⭐ 이 프로젝트가 유용하다면 Star를 눌러주세요! ⭐**
 
-[🌐 GitHub Pages 데모](https://hwkim3330.github.io/d10frertest) | [📊 샘플 결과](sample_results/) | [📖 문서](docs/)
+### 🔗 빠른 링크
+
+[🌐 GitHub Pages 메인](https://hwkim3330.github.io/d10frertest) |
+[📊 FRER 비교 분석](https://hwkim3330.github.io/d10frertest/comparison.html) |
+[📁 테스트 결과](sample_results/) |
+[📄 비교 문서](sample_results/FRER_VS_NON-FRER_COMPARISON.md)
 
 Made with ❤️ by Network Performance Testing Lab
 

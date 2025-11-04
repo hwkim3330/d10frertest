@@ -366,6 +366,7 @@
         <div class="container">
             <ul>
                 <li><a href="#overview"><i class="fas fa-home"></i> 개요</a></li>
+                <li><a href="comparison.html" style="background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%); color: white; font-weight: bold;"><i class="fas fa-balance-scale"></i> FRER vs Non-FRER 비교 🔥</a></li>
                 <li><a href="#results"><i class="fas fa-chart-line"></i> 테스트 결과</a></li>
                 <li><a href="#architecture"><i class="fas fa-project-diagram"></i> 아키텍처</a></li>
                 <li><a href="#usage"><i class="fas fa-terminal"></i> 사용법</a></li>
@@ -375,6 +376,37 @@
     </nav>
 
     <div class="container">
+        <!-- FRER Comparison Banner -->
+        <section class="card" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, rgba(33, 150, 243, 0.2) 100%); border: 2px solid #4CAF50;">
+            <h2 style="color: #4CAF50;"><i class="fas fa-fire icon"></i>🔥 FRER vs Non-FRER 성능 비교 분석</h2>
+            <p style="font-size: 1.2em; margin: 20px 0;">
+                <strong>IEEE 802.1CB 프레임 복제</strong>의 효과를 실제 데이터로 검증했습니다!
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 25px 0;">
+                <div style="text-align: center; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                    <div style="font-size: 1.8em; color: #4CAF50; font-weight: bold;">+11.2%</div>
+                    <div>평균 레이턴시 개선</div>
+                </div>
+                <div style="text-align: center; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                    <div style="font-size: 1.8em; color: #4CAF50; font-weight: bold;">+17.0%</div>
+                    <div>P99 레이턴시 개선</div>
+                </div>
+                <div style="text-align: center; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                    <div style="font-size: 1.8em; color: #4CAF50; font-weight: bold;">+21.1%</div>
+                    <div>Jitter 감소</div>
+                </div>
+                <div style="text-align: center; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                    <div style="font-size: 1.8em; color: #4CAF50; font-weight: bold;">+6.9%</div>
+                    <div>소형 프레임 처리량</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="comparison.html" style="display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%); color: white; text-decoration: none; border-radius: 8px; font-size: 1.2em; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.2s;">
+                    <i class="fas fa-chart-line"></i> 인터랙티브 비교 차트 보기 →
+                </a>
+            </div>
+        </section>
+
         <!-- Overview Section -->
         <section id="overview" class="card">
             <h2><i class="fas fa-info-circle icon"></i>프로젝트 개요</h2>
