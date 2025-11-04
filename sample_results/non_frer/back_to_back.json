@@ -1,0 +1,58 @@
+{
+  "64": {
+    "frame_size": 64,
+    "frames_sent": 1834316,
+    "frames_received": 1567394,
+    "frames_lost": 266922,
+    "loss_percent": 14.551582170138625,
+    "max_burst_size": 1567394
+  },
+  "128": {
+    "frame_size": 128,
+    "frames_sent": 1288780,
+    "frames_received": 1227867,
+    "frames_lost": 60913,
+    "loss_percent": 4.72640792066916,
+    "max_burst_size": 1227867
+  },
+  "256": {
+    "frame_size": 256,
+    "frames_sent": 776153,
+    "frames_received": 766323,
+    "frames_lost": 9830,
+    "loss_percent": 1.2665028673470309,
+    "max_burst_size": 766323
+  },
+  "512": {
+    "frame_size": 512,
+    "frames_sent": 432481,
+    "frames_received": 402927,
+    "frames_lost": 29554,
+    "loss_percent": 6.833595001861354,
+    "max_burst_size": 402927
+  },
+  "1024": {
+    "frame_size": 1024,
+    "frames_sent": 229317,
+    "frames_received": 222153,
+    "frames_lost": 7164,
+    "loss_percent": 3.124059707740813,
+    "max_burst_size": 222153
+  },
+  "1280": {
+    "frame_size": 1280,
+    "frames_sent": 185715,
+    "frames_received": 179609,
+    "frames_lost": 6106,
+    "loss_percent": 3.28783350833266,
+    "max_burst_size": 179609
+  },
+  "1518": {
+    "frame_size": 1518,
+    "frames_sent": 152213,
+    "frames_received": 149102,
+    "frames_lost": 3111,
+    "loss_percent": 2.0438464520113264,
+    "max_burst_size": 149102
+  }
+}

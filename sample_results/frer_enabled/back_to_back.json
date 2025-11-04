@@ -1,0 +1,58 @@
+{
+  "64": {
+    "frame_size": 64,
+    "frames_sent": 1812572,
+    "frames_received": 304116,
+    "frames_lost": 1508456,
+    "loss_percent": 83.22185270433395,
+    "max_burst_size": 304116
+  },
+  "128": {
+    "frame_size": 128,
+    "frames_sent": 1288820,
+    "frames_received": 40936,
+    "frames_lost": 1247884,
+    "loss_percent": 96.8237612699989,
+    "max_burst_size": 40936
+  },
+  "256": {
+    "frame_size": 256,
+    "frames_sent": 776302,
+    "frames_received": 55111,
+    "frames_lost": 721191,
+    "loss_percent": 92.9008298316892,
+    "max_burst_size": 55111
+  },
+  "512": {
+    "frame_size": 512,
+    "frames_sent": 432435,
+    "frames_received": 36805,
+    "frames_lost": 395630,
+    "loss_percent": 91.4888942846902,
+    "max_burst_size": 36805
+  },
+  "1024": {
+    "frame_size": 1024,
+    "frames_sent": 229328,
+    "frames_received": 32720,
+    "frames_lost": 196608,
+    "loss_percent": 85.7322263308449,
+    "max_burst_size": 32720
+  },
+  "1280": {
+    "frame_size": 1280,
+    "frames_sent": 185701,
+    "frames_received": 54578,
+    "frames_lost": 131123,
+    "loss_percent": 70.6097436201205,
+    "max_burst_size": 54578
+  },
+  "1518": {
+    "frame_size": 1518,
+    "frames_sent": 152220,
+    "frames_received": 21144,
+    "frames_lost": 131076,
+    "loss_percent": 86.10957824201813,
+    "max_burst_size": 21144
+  }
+}
